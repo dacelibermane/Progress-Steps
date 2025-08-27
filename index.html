@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Progress Steps</title>
+</head>
+
+<body>
+  <section class="container">
+    <section class="progress-container">
+      <!--Span because this is purely decoreative element, aria-hidden="true" ensures assistive tech ignores it-->
+      <span class="progress-line" id="progress-line" aria-hidden="true"></span>
+      <ol class="progress" id="progress">
+        <li class="circle active">1</li>
+        <li class="circle">2</li>
+        <li class="circle">3</li>
+        <li class="circle">4</li>
+      </ol>
+    </section>
+    <!-- disabled by default as we start at one and we can't go previous if we're at one -->
+    <button class="btn" id="prev" disabled>Prev</button>
+    <button class="btn" id="next">Next</button>
+  </section>
+  <script src="script.js"></script>
+</body>
+
+</html>
