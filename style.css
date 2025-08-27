@@ -1,11 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
 
+:root {
+  --line-border-fill: #c3600e;
+  --line-border-empty: #7f8083;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: rgb(211, 235, 246);
+  background: #0f0c29;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 12, 41, 1) 0%,
+    rgba(48, 43, 99, 1) 50%,
+    rgba(36, 36, 62, 1) 100%
+  );
   font-family: "Mulish", sans-serif;
   display: flex;
   flex-direction: column;
@@ -23,12 +34,102 @@ Combined with height: 100vh;, body now truly fills
 
 .container {
   text-align: center;
+  /* background-color: #fff;
+  border-radius: 40px;
+  height: 50vh; */
+}
+
+.progress-container {
+  /*for positioning child elements absolutely inside it.*/
+  /*without position: relative on .progress-container, 
+  your connecting line might float in the wrong place on the page.*/
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 100%;
+  width: 500px;
+}
+
+.progress-container::before {
+  /*to actually see content, set this to empty*/
+  content: "";
+  position: absolute;
+  background: var(--line-border-empty);
+  top: 50%;
+  left: 0%;
+  /*to position line write in the middles*/
+  transform: translateY(-50%);
+  height: 4px;
+  /*represent an empty line*/
+  width: 100%;
+  /*to make sure line is behind circles and numbers*/
+  z-index: -1;
+}
+
+.progress-line {
+  position: absolute;
+  background: var(--line-border-fill);
+  top: 50%;
+  left: 0%;
+  /*to position line write in the middles*/
+  transform: translateY(-50%);
+  height: 4px;
+  /*zero is the starting point of the line*/
+  width: 0%;
+  /*to make sure line is behind circles and numbers*/
+  z-index: -1;
+  transition: 0.4s ease;
 }
 
 .progress {
+  list-style: none;
   /* Places numbers in a row */
   display: flex;
-  justify-content: space-evenly;
 
-  list-style: none;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.circle {
+  background-color: #fff;
+  color: #4a4949;
+  font-weight: bold;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid var(--line-border-empty);
+  /*border will change deending on where the blue line is*/
+  transition: 0.4s ease;
+}
+
+.circle.active {
+  border-color: var(--line-border-fill);
+}
+
+.btn {
+  background-color: var(--line-border-fill);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:disabled {
+  background-color: var(--line-border-empty);
+  cursor: not-allowed;
 }
