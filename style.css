@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 :root {
-  --line-border-fill: #c3600e;
-  --line-border-empty: #7f8083;
+  --line-border-fill: #2dd4bf;
+  --line-border-empty: #8b7bb7;
 }
 
 * {
