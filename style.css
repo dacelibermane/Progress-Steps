@@ -1,8 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 :root {
-  --line-border-fill: #2dd4bf;
-  --line-border-empty: #8b7bb7;
+  --progress-active: #2dd4bf;
+  --progress-active-hover: #5eead4;
+
+  --progress-inactive: #8b7bb7;
+  --progress-inactive-hover: #b9a8da;
+
+  /*Neutral colors*/
+  --color-white: #fff;
+  --color-grey: #4a4949;
 }
 
 * {
@@ -34,7 +41,7 @@ Combined with height: 100vh;, body now truly fills
 
 .container {
   text-align: center;
-  /* background-color: #fff;
+  /* background-color: var(--color-white);
   border-radius: 40px;
   height: 50vh; */
 }
@@ -53,7 +60,7 @@ Combined with height: 100vh;, body now truly fills
   /*to actually see content, set this to empty*/
   content: "";
   position: absolute;
-  background: var(--line-border-empty);
+  background: var(--progress-inactive);
   top: 50%;
   left: 0%;
   /*to position line write in the middles*/
@@ -67,7 +74,7 @@ Combined with height: 100vh;, body now truly fills
 
 .progress-line {
   position: absolute;
-  background: var(--line-border-fill);
+  background: var(--progress-active);
   top: 50%;
   left: 0%;
   /*to position line write in the middles*/
@@ -91,8 +98,8 @@ Combined with height: 100vh;, body now truly fills
 }
 
 .circle {
-  background-color: #fff;
-  color: #4a4949;
+  background-color: var(--color-white);
+  color: var(--color-grey);
   font-weight: bold;
   height: 40px;
   width: 40px;
@@ -100,18 +107,18 @@ Combined with height: 100vh;, body now truly fills
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 5px solid var(--line-border-empty);
+  border: 5px solid var(--progress-inactive);
   /*border will change deending on where the blue line is*/
   transition: 0.4s ease;
 }
 
 .circle.active {
-  border-color: var(--line-border-fill);
+  border-color: var(--progress-active);
 }
 
 .btn {
-  background-color: var(--line-border-fill);
-  color: #fff;
+  background-color: var(--progress-active);
+  color: var(--color-white);
   border: 0;
   border-radius: 6px;
   cursor: pointer;
@@ -129,7 +136,17 @@ Combined with height: 100vh;, body now truly fills
   outline: none;
 }
 
+#next:hover {
+  background-color: var(--progress-active-hover);
+  color: var(--color-grey);
+}
+
+.btn:not(:disabled):hover {
+  background-color: var(--progress-inactive-hover);
+  color: var(--color-grey);
+}
+
 .btn:disabled {
-  background-color: var(--line-border-empty);
+  background-color: var(--progress-inactive);
   cursor: not-allowed;
 }
